@@ -3,30 +3,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Wolf Search</title>
-  <style>
-    body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; margin: 2rem; background:#0f172a;color:#e6eef8; }
-    .box{ max-width:820px; margin:0 auto; }
-    input[type="search"]{ width:100%; padding:14px 18px; border-radius:10px; border:1px solid #334155; background:#020617; color:#e6eef8; }
-    .result{ padding:12px; border-radius:8px; margin-top:10px; background:rgba(255,255,255,0.02); }
-    a{ color:#9be7ff; text-decoration:none; }
-    .meta{ font-size:0.85rem; color:#9aa6b2; }
-    footer{ margin-top:30px; font-size:0.85rem; color:#9aa6b2; text-align:center; }
-  </style>
+  <title>Wolf Search — Private</title>
+
+  <!-- Privacy & security -->
+  <meta name="referrer" content="no-referrer" />
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Lunr.js CDN (for client-side indexing & searching) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="box">
-    <h1>🐺 Wolf Search</h1>
-    <p class="meta">Private. Self-hosted. No tracking.</p>
+  <main class="container">
+    <header>
+      <h1 class="title">🐺 Wolf Search</h1>
+      <p class="tagline">Private • Client-side • Self-hosted</p>
+    </header>
 
-    <input id="q" type="search" placeholder="Search..." autocomplete="off" />
-    <div id="results"></div>
+    <section class="searchbox">
+      <input id="q" type="search" placeholder="Search docs or paste a URL (e.g. mail.google.com)" autocomplete="off" />
+      <div class="controls">
+        <button id="searchBtn">Search</button>
+        <button id="clearBtn">Clear</button>
+      </div>
+    </section>
+
+    <section id="results" class="results" aria-live="polite"></section>
 
     <footer>
-      <small>Wolf Search — hosted by you. No collection. No sale. See <a href="/PRIVACY.md" style="color:#9be7ff">Privacy</a>.</small>
+      <small>No tracking. All search runs inside your browser. Host on GitHub Pages.</small>
+      <p><a href="LICENSE">License</a> • <a href="README.md">Readme</a></p>
     </footer>
-  </div>
+  </main>
 
-  <script src="/static/js/search.js"></script>
+  <script src="assets/js/search.js"></script>
 </body>
 </html>
